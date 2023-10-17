@@ -1,17 +1,62 @@
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
+
 body {
+  margin: 12px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
   background-color: #2970a2;
   color: #fff;
 }
+
 blockquote {
   background-color: #fff;
 }
+
+/* Class components */
+
+.container {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.list-wrapper {
+  margin-right: 12px;
+  display: inline-block;
+  height: 100%;
+  margin: 0 4px;
+  scroll-margin: 8px;
+  vertical-align: top;
+  white-space: nowrap;
+  width: 372px;
+}
 .taskDiv {
-  margin: 8px;
   padding: 10px 8px;
   background-color: #e4e3e4;
   color: #333;
   border-radius: 8px;
+}
+.task-header {
+  padding: 8px;
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  overflow-wrap: break-word;
+}
+
+.task-header button {
+  width: 24px;
+  height: 24px;
+}
+
+.list-group {
+  padding: 8px 8px 4px 12px;
+  overflow: hidden;
+  cursor: pointer;
 }
