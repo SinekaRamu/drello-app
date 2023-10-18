@@ -5,13 +5,13 @@ const TodoCard = (props) => {
   const [content, setContent] = useState("");
   const [isEdit, setIsedit] = useState(true);
 
-  const convertTime24_12 = (t) => {
-    let [h, ...rest] = t.split(":");
-    return (
-      (h == "12" ? "12" : h % 12) + ":" + rest.join(":")
-      // (h < 12 ? " AM" : " PM")
-    );
-  };
+  // const convertTime24_12 = (t) => {
+  //   let [h, ...rest] = t.split(":");
+  //   return (
+  //     (h == "12" ? "12" : h % 12) + ":" + rest.join(":")
+  //     // (h < 12 ? " AM" : " PM")
+  //   );
+  // };
   function handleDeleteClick(taskId) {
     console.log(taskId);
     handleDelete(taskId);

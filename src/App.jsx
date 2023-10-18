@@ -14,6 +14,14 @@ function App() {
     localStorage.setItem("My-Drello", JSON.stringify(todos));
   }, [todos]);
 
+  const convertTime24_12 = (t) => {
+    let [h, ...rest] = t.split(":");
+    return (
+      (h == "12" ? "12" : h % 12) + ":" + rest.join(":")
+      // (h < 12 ? " AM" : " PM")
+    );
+  };
+
   function todoReducer(todos, action) {
     switch (action.type) {
       case "TODO_ADD": {
@@ -21,6 +29,7 @@ function App() {
           ...todos,
           {
             id: new Date().getTime(),
+            time: convertTime24_12(new Date().toLocaleTimeString()),
             text: action.value,
             inSate: "todo",
           },
@@ -36,6 +45,9 @@ function App() {
         const idx = newTodos.findIndex((nt) => nt.id === action.value.id);
         if (idx !== -1) {
           newTodos[idx]["text"] = action.value.text;
+          newTodos[idx]["time"] = convertTime24_12(
+            new Date().toLocaleTimeString()
+          );
         }
         return newTodos;
       }
