@@ -1,26 +1,31 @@
 import TodoCard from "./TodoCard";
-import { useState } from "react";
-const Todo = () => {
-  const [card, setCard] = useState([]);
+const Todo = ({ handleAdd, handleDelete, handleEdit, todos }) => {
+  const updateAdd = (value, id) => {
+    handleAdd(value, id);
+  };
 
   const addCard = () => {
-    const newBlockquotes = [...card, <TodoCard />];
-    setCard(newBlockquotes);
+    handleAdd("");
   };
+
   return (
-    <div className="col-sm taskDiv">
-      <div className="d-flex justify-content-between mb-3">
+    <div className="taskDiv">
+      <div className="task-header">
         <h2>Todo</h2>
-        <button className="btn btn-light" onClick={addCard}>
-          +
-        </button>
+        <button onClick={addCard}>+</button>
       </div>
-      <div className="mb-3">
-        {card.map((card, index) => (
-          <div key={index}>{card}</div>
+      <div>
+        {todos.map((t) => (
+          <div key={t.id}>
+            <TodoCard
+              sendAdd={updateAdd}
+              handleDelete={handleDelete}
+              editContent={handleEdit}
+              task={t}
+            />
+          </div>
         ))}
       </div>
-      <TodoCard />
     </div>
   );
 };
