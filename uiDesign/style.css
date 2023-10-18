@@ -25,6 +25,7 @@ body {
 }
 .container {
   margin: 12px;
+  max-width: 1200px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
@@ -38,6 +39,7 @@ body {
   width: 372px;
 }
 .taskDiv {
+  margin-bottom: 10px;
   padding: 10px 8px 8px 8px;
   background-color: #e4e3e4;
   color: #333;
@@ -78,4 +80,13 @@ body {
 .list-item-time {
   padding-top: 6px;
   float: right;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+  .list-wrapper {
+    max-width: 600px;
+  }
 }
