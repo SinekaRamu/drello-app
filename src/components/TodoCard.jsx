@@ -1,9 +1,8 @@
 import { useState } from "react";
 
 const TodoCard = (props) => {
-  const { handleDelete, editContent, task } = props;
+  const { handleDelete, editContent, task, onDragStart, onDragOver } = props;
   const [content, setContent] = useState(task.text);
-  const [isEdit, setIsedit] = useState(true);
 
   const convertTime24_12 = (t) => {
     let [h, ...rest] = t.split(":");
@@ -20,13 +19,17 @@ const TodoCard = (props) => {
   }
   function handleEditContent(id) {
     editContent(content, id);
-    setIsedit(false);
   }
 
   return (
     <>
       <form className="list-group">
-        <div className="list-item title" draggable>
+        <div
+          className="list-item title"
+          draggable
+          onDragStart={(e) => onDragStart(e, task.id)}
+          onDragOver={(e) => onDragOver(e)}
+        >
           <button onClick={() => handleDeleteClick(task.id)}>X</button>
         </div>
         <div className="list-item-message">
