@@ -1,5 +1,5 @@
 import TodoCard from "./TodoCard";
-const Todo = ({ handleAdd, handleDelete, handleEdit, todos }) => {
+const InProgress = ({ handleAdd, handleDelete, handleEdit, todos }) => {
   const updateAdd = (value, id) => {
     handleAdd(value, id);
   };
@@ -16,7 +16,7 @@ const Todo = ({ handleAdd, handleDelete, handleEdit, todos }) => {
   return (
     <div>
       {todos
-        .filter((t) => t.inState === "Todo")
+        .filter((t) => t.inState === "In Progress")
         .map((t) => (
           <div key={t.id}>
             <TodoCard
@@ -33,4 +33,4 @@ const Todo = ({ handleAdd, handleDelete, handleEdit, todos }) => {
   );
 };
 
-export default Todo;
+export default InProgress;
